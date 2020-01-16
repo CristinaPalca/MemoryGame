@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap');
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-style: normal;
+  font-size: 18px;
+  box-sizing: border-box;
+  background-color:  #031321;
+  font-family: 'Fredericka the Great', cursive;
+  color: #2196f3;
+}
+
+.begin-screen, .end-screen{
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 1;
+}
+.end-screen{
+  display: none;
+}
+
+.begin-content, .end-content{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  font-size: 10vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: absolute;
+  color: #2196f3;
+  font-family: 'Fredericka the Great', cursive;
+
+}
+.begin-content:hover{
+  font-size: 12vw;
+}
+.begin-wall, .end-wall{
+    background-color: #000;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.gridContainer{
+
+  margin: 30px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.container{
+  width: 150px;
+  height: 180px;
+  margin: 10px;
+  perspective: 800px;
+
+}
+.card{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+
+.card-face{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+}
+
+.front-face{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 10px;
+  background: #255784;
+  background-image: url('images/cranium-1296336_1280.png');
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0 0 5px #2196f3, 0 0 7px #2196f3, 0 0 10px #2196f3;
+}
+
+.hidden-face{
+  background-color: #B963FF;
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: rotateY(180deg);
+  box-shadow: 0 0 10px #4B0B80, 0 0 15px #7812CC, 0 0 20px #B963FF;
+}
+
+.card.is-flipped{
+  transform: rotateY(180deg);
+}
+
+#info{
+  width: 50%;
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+
+}
+.moves-left{
+  margin-right: 30px;
+}
+.level{
+  color: #FF8000;
+  margin-left: 20px;
+}
