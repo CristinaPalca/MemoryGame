@@ -11,7 +11,7 @@ var imagesArray = ['cat-solid.svg', 'cat-solid.svg', 'dragon-solid.svg', 'dragon
 'dizzy-solid.svg', 'dizzy-solid.svg', 'grin-tongue-wink-solid.svg', 'grin-tongue-wink-solid.svg',
 'hotdog-solid.svg', 'hotdog-solid.svg', 'ice-cream-solid.svg', 'ice-cream-solid.svg',
 'lemon-solid.svg', 'lemon-solid.svg', 'pizza-slice-solid.svg', 'pizza-slice-solid.svg',
-'bicycle-solid.svg', 'bicycle-solid.svg'];
+'bicycle-solid.svg', 'bicycle-solid.svg', 'igloo-solid.svg', 'igloo-solid.svg'];
 
 var countOpenContainers = 0;
 var nrOfContainers;
@@ -26,6 +26,10 @@ var cardMargin = 10;
 var levelImages = [];
 openContainers.length = 2;
 
+const nrOfCardsPerLevel = [2, 4, 6, 12, 16];
+const nrOfMovesPerLevel = [2, 8, 15, 32, 40];
+const gridWidthPerLevel = [999, 340, 510, 680, 680];
+
 
 var s = '<div class="container">'
   +'<div class="card"><div class="card-face front-face"></div><div class="card-face hidden-face"> </div>'
@@ -34,27 +38,20 @@ var s = '<div class="container">'
 
 function addContainers(){
 
-  gridContainer.style.width = (widthOfCard + cardMargin * 2) * (level + 1) + "px";
-  console.log();
-
-  if((level%2) == 1){
-    for(var i = 0; i < (level + 1) * level; i++){
-      gridContainer.innerHTML += s;
-      console.log("adding new container");
-    }
-  }else{
-    for(var i = 0; i < level * level; i++){
-      gridContainer.innerHTML += s;
-      console.log("adding new container");
-    }
+  if(level > 1){
+    gridContainer.style.width = gridWidthPerLevel[level - 1] + 'px';
   }
 
+  for(let i = 0; i < nrOfCardsPerLevel[level - 1]; i++){
+    gridContainer.innerHTML += s;
+  }
   imagesList = document.querySelectorAll(".hidden-face");
   cards = document.querySelectorAll('.card');
   nrOfContainers = cards.length;
   console.log(nrOfContainers);
-  nrOfMoves = nrOfContainers * 3;
+  nrOfMoves = nrOfMovesPerLevel[level - 1];
   levelContainer.innerHTML = level;
+
   assignImages();
   addListeners();
 }

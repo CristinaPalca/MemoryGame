@@ -56,20 +56,29 @@ body{
 }
 
 .gridContainer{
-
   margin: 30px auto;
+  width: 100vw;
+  max-width: 100vw;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .container{
-  width: 150px;
-  height: 180px;
+  width: 35vw;
+  height: 50vw;
   margin: 10px;
   perspective: 800px;
+}
+
+@media(min-width: 576px){
+  .container{
+    width: 150px;
+    height: 200px;
+  }
 
 }
+
 .card{
   width: 100%;
   height: 100%;
@@ -114,17 +123,25 @@ body{
 }
 
 #info{
-  width: 50%;
+  width: 90vw;
   margin: 30px auto;
   display: flex;
   justify-content: center;
-  font-size: 30px;
+  font-size: 20px;
 
 }
 .moves-left{
-  margin-right: 30px;
+  margin-right: 20px;
 }
 .level{
   color: #FF8000;
-  margin-left: 20px;
+}
+
+@media (min-width: 576px){
+  #info{
+    font-size: 30px;
+  }
+  .moves-left{
+    margin-right: 40px;
+  }
 }
