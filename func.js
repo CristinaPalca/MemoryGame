@@ -19,7 +19,7 @@ var nrOfMoves;
 var nrOfPairs = 0;
 var pairsChecked = 0;
 var openContainers = [];
-var level = 3;
+var level = 1;
 const maxLevels = 5;
 var widthOfCard = 150;
 var cardMargin = 10;
