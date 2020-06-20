@@ -72,11 +72,13 @@ body{
 }
 
 @media(min-width: 576px){
-  .container{
-    width: 150px;
-    height: 200px;
+  .gridContainer{
+    max-width: 700px;
   }
-
+  .container{
+    max-width: 150px;
+    max-height: 200px;
+  }
 }
 
 .card{

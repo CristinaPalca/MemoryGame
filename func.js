@@ -19,7 +19,7 @@ var nrOfMoves;
 var nrOfPairs = 0;
 var pairsChecked = 0;
 var openContainers = [];
-var level = 1;
+var level = 3;
 const maxLevels = 5;
 var widthOfCard = 150;
 var cardMargin = 10;
@@ -28,19 +28,73 @@ openContainers.length = 2;
 
 const nrOfCardsPerLevel = [2, 4, 6, 12, 16];
 const nrOfMovesPerLevel = [2, 8, 15, 32, 40];
-const gridWidthPerLevel = [999, 340, 510, 680, 680];
 
+const lgGridWidthPerLevel = [70, 60, 60, 80, 80];
+const smGridCardWidthPerLevel = [{
+  width: 35,
+  height: 50
+},{
+  width: 35,
+  height: 50
+},
+{
+  width: 25,
+  height: 35
+},{
+  width: 20,
+  height: 30
+},{
+  width: 20,
+  height: 30
+}];
+const lgGridCardWidthPerLevel = [{
+  width: 30,
+  height: 50
+},{
+  width: 25,
+  height: 35
+},{
+  width: 20,
+  height: 30
+},{
+  width: 15,
+  height: 20
+},{
+  width: 15,
+  height: 20
+}];
 
 var s = '<div class="container">'
   +'<div class="card"><div class="card-face front-face"></div><div class="card-face hidden-face"> </div>'
   +'</div></div>';
 
+window.addEventListener('resize', checkWidth);
+
+function checkWidth(){
+  if(window.innerWidth < 576){
+    if(level > 1){
+      let cards = document.querySelectorAll('.container');
+      cards.forEach((item, i) => {
+        item.style.width = smGridCardWidthPerLevel[level-1].width + 'vw';
+        item.style.height = smGridCardWidthPerLevel[level-1].height + 'vw';
+      });
+
+    }
+    console.log("sm screen");
+  }else{
+    if(level > 1){
+      gridContainer.style.width = lgGridWidthPerLevel[level - 1] + 'vw';
+      let cards = document.querySelectorAll('.container');
+      cards.forEach((item, i) => {
+        item.style.width = lgGridCardWidthPerLevel[level-1].width + 'vw';
+        item.style.height = lgGridCardWidthPerLevel[level-1].height + 'vw';
+      });
+    }
+    console.log("larger screen");
+  }
+}
 
 function addContainers(){
-
-  if(level > 1){
-    gridContainer.style.width = gridWidthPerLevel[level - 1] + 'px';
-  }
 
   for(let i = 0; i < nrOfCardsPerLevel[level - 1]; i++){
     gridContainer.innerHTML += s;
@@ -54,6 +108,7 @@ function addContainers(){
 
   assignImages();
   addListeners();
+  checkWidth();
 }
 addContainers();
 
